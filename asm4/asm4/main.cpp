@@ -4,7 +4,7 @@
 int main() 
 {
 	long l;
-	int c;
+	unsigned char c;
 	char str[150];
 
 	cout << "long: ";

@@ -18,10 +18,10 @@ private:
 
 public:
 
-	Serealizer(long Long, int byte, char* str)
+	Serealizer(long Long, unsigned char byte, char* str)
 	{
 		this->Long = Long;
-		this->byte = (unsigned char)byte;
+		this->byte = byte;
 		strcpy_s(this->str, str);
 		this->stringLength = strlen(str) + 1;
 	}

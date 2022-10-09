@@ -14,9 +14,9 @@ MessageBoxA PROTO : DWORD, : DWORD, : DWORD, : DWORD
 MB_OK	EQU 0
 STR1	DB "Программа", 0
 HW		DD ?
-LONGF	DD 2374892
-BYTEF	DB 122
-STRF	DB "This is a cool string wow congratulations", 0
+LONGF	SDWORD -3666637
+BYTEF	DB 245
+STRF	DB "this is a string wow", 0
 
 .CODE
 

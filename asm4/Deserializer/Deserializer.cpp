@@ -34,7 +34,7 @@ void Deserializer::ConvertToAssembler()
 
 	fileAsm ASM_HEAD;
 
-	fileAsm << "LONGF	DD " << Long << endl;
+	fileAsm << "LONGF	SDWORD " << Long << endl;
 	fileAsm << "BYTEF	DB " << (int)byte << endl;
 	fileAsm << "STRF	DB \"" << str << "\", 0" << endl << endl;
 

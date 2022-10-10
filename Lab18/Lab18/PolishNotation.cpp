@@ -24,6 +24,8 @@ bool PolishNotation(char* str, string &result)
 		}
 		else if (s == ')')
 		{
+			if (st.empty())
+				return false;
 			while (st.top() != '(')
 			{
 				s = st.top();

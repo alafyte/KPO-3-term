@@ -64,14 +64,14 @@ tochar PROC uses eax ebx ecx edi esi, pstr : dword, intfield : sdword
 	cdq
 	mov ebx, 10
 	idiv ebx
-plus:
+cycle:
 	push dx
 	inc esi
 	test eax, eax
 	jz fin
 	cdq
 	idiv ebx
-	jmp plus 
+	jmp cycle
 fin:
 	mov ecx, esi
 write: 

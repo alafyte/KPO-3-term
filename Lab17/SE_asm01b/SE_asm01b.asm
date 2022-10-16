@@ -14,7 +14,7 @@ getmax				PROTO: DWORD, : DWORD
 
 .CONST 
 consoletitle	DB 'SE_asm01b', 0
-Arr				DD 2, 67, -5, 90, 10, -24, 21, 7, 9, 10
+Arr				DD 2, 67, -5, 91, 10, -24, 21, 7, 9, 10
 
 .DATA
 result1			BYTE "getmax + getmin = ", 0
@@ -59,14 +59,14 @@ tochar PROC uses eax ebx ecx edi esi, pstr : dword, intfield : sdword
 	cdq
 	mov ebx, 10
 	idiv ebx
-loop:
+cycle:
 	push dx
 	inc esi
 	test eax, eax
 	jz fin
 	cdq
 	idiv ebx
-	jmp loop
+	jmp cycle
 fin:
 	mov ecx, esi
 write: 

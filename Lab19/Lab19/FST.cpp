@@ -26,44 +26,47 @@ namespace FST
 
 	FST::FST(char* s, short ns, NODE n, ...)
 	{
-		this->position = 0;
+		this->position = -1;
 		this->string = s;
 		this->nstates = ns;
 		this->rstates = new short[nstates];
 		this->nodes = new NODE[nstates];
 
-		for (int i = 0; i < nstates; i++)
-			rstates[i] = 0;
+		rstates = new short[nstates];
+		memset(rstates, 0xff, sizeof(short) * nstates);
+		rstates[0] = 0;
 
 		NODE* wptr = &n;
 		for (int i = 0; i < ns; i++)
 			nodes[i] = wptr[i];
 	}
 
+	bool step(FST& fst, short*& rstates) {
+		bool rc = false;
+		std::swap(rstates, fst.rstates);
+		for (short i = 0; i < fst.nstates; i++)
+		{
+			if (rstates[i] == fst.position)
+				for (short j = 0; j < fst.nodes[i].n_relation; j++)
+					if (fst.nodes[i].relations[j].symbol == fst.string[fst.position]) {
+						fst.rstates[fst.nodes[i].relations[j].nnode] = fst.position + 1;
+						rc = true;
+					};
+		};
+		return rc;
+	};
 	bool execute(FST& fst)
 	{
-		bool result = true;
 		short* rstates = new short[fst.nstates];
-		for (int i = 0; i < fst.nstates; i++)
-			rstates[i] = -1;
-
-		while (fst.position < strlen(fst.string) && result)
+		memset(rstates, 0xff, sizeof(short) * fst.nstates);
+		short lstring = strlen(fst.string);
+		bool rc = true;
+		for (short i = 0; i < lstring && rc; i++)
 		{
-			result = false;
-			std::swap(rstates, fst.rstates);
-			for (int i = 0; i < fst.nstates; i++)
-				if (rstates[i] == fst.position)
-					for (int j = 0; j < fst.nodes[i].n_relation; j++)
-						if (fst.nodes[i].relations[j].symbol == fst.string[fst.position])
-						{
-							fst.rstates[fst.nodes[i].relations[j].nnode] = fst.position + 1;
-							result = true;
-						}
-
 			fst.position++;
-		}
+			rc = step(fst, rstates);
+		};
 		delete[] rstates;
-		fst.position = 0;
-		return (result ? (fst.rstates[fst.nstates - 1] == strlen(fst.string)) : result);
+		return (rc ? (fst.rstates[fst.nstates - 1] == lstring) : rc);
 	};
 }

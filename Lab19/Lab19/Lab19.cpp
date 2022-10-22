@@ -1,7 +1,6 @@
 ﻿#include "stdafx.h"
 #include "FST.h"
 
-//абвгдеёжзийклмнопрстуфхцчшщъыьэюя
 int _tmain(int argc, TCHAR* argv[])
 {
 	setlocale(LC_ALL, "rus");

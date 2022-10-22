@@ -141,7 +141,6 @@
   <ItemGroup>
     <ClCompile Include="FST.cpp" />
     <ClCompile Include="Lab19.cpp" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

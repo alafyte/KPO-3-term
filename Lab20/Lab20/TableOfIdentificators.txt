@@ -3,13 +3,12 @@
  Идентификатор:      Тип данных:      Значение:              Длина строки:   Первое вхождение:
    0_l			INT 		1			-		66
    1_l			INT 		3			-		68
-   x			INT 		1			-		119
-   y			INT 		5			-		123
-   sa			STR 	    '1234567890'                12		127
-   sb			STR 	    '1234567890'                12		131
-   vlad			STR 	    'ха-ха попал в лабу'        20		135
-   2_l			STR 	    'контрольный пример'        20		138
-   3_l			INT 		0			-		171
+   x			INT 		1			-		115
+   y			INT 		5			-		119
+   sa			STR 	    '1234567890'                12		123
+   sb			STR 	    '1234567890'                12		127
+   2_l			STR 	    'контрольный пример'        20		130
+   3_l			INT 		0			-		163
 
 
 
@@ -20,7 +19,7 @@
    fs                      STR 				2				32
    substr                  STR 				3				48
    main                    INT 				0				78
-   strlen                  INT 				1				111
+   strlen                  INT 				1				107
 
 
 
@@ -42,8 +41,7 @@
    main                             sa                STR               V			94
    main                             sb                STR               V			98
    main                             sc                STR               V			102
-   main                           vlad                STR               V			106
-   strlen                            p                STR               P			114
+   strlen                            p                STR               P			110
 
 
 

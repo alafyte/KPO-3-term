@@ -11,7 +11,7 @@ namespace LA
 
 		for (int i = 0, j = 0; i < source.size; i++)
 		{
-			if (in_ex.code[(source.text[i])] != in_ex.D && in_ex.code[(source.text[i])] != in_ex.A)
+			if (in_ex.code[(source.text[i])] != in_ex.D && in_ex.code[(source.text[i])] != in_ex.O && (source.text[i]) != '|')
 			{
 				temp[j++] = source.text[i];
 				str_position++;
@@ -62,7 +62,7 @@ namespace LA
 							throw ERROR_THROW_IN(124, str_number, str_position);
 					}
 
-					if (source.text[i] != '\n')
+					if (source.text[i] != '|')
 					{
 						if (source.text[i] == ' ' || source.text[i] == '\t')
 						{
@@ -81,7 +81,7 @@ namespace LA
 					}
 				}
 			}
-			if (source.text[i] == '\n')
+			if (source.text[i] == '|')
 			{
 				str_number++;
 				str_position = 0;
@@ -338,7 +338,7 @@ namespace LA
 				delete number_literal;
 				number_literal = NULL;
 
-				return  AnalyseIdentificator(token, str_number, lexTable, idTable, flag_type_variable);
+				return AnalyseIdentificator(token, str_number, lexTable, idTable, flag_type_variable);
 			}
 		}
 

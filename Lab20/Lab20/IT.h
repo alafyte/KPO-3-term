@@ -28,8 +28,8 @@ namespace IT								// таблица идентификаторов
 			{
 				unsigned char len;								// количество символов в string
 				char str[TI_STR_MAXSIZE];			// символы string
-			}vstr;						// значение string
-		}value;	// значение идентификатора
+			} vstr;						// значение string
+		} value;	// значение идентификатора
 		int parmQuantity;
 		Entry();
 		Entry(const char* parrentFunc, const char* id, IDDATATYPE iddatatype, IDTYPE idtype, int first);
@@ -53,7 +53,7 @@ namespace IT								// таблица идентификаторов
 		);
 		int IsId(const char id[ID_MAXSIZE], const char parrent_function[ID_MAXSIZE + 5]);
 
-		void Add(								// добавиь строку в таблицу идентификаторов 
+		void Add(								// добавить строку в таблицу идентификаторов 
 			Entry entry										// строка таблицы идентификторов
 		);
 		void PrintIdTable(const wchar_t* in);

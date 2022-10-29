@@ -31,7 +31,7 @@ namespace In
 				text[in_ex.size] = STRING_END_ZERO;
 				break;
 			}
-			if (in_ex.code[uc] == in_ex.T || in_ex.code[uc] == in_ex.D || in_ex.code[uc] == in_ex.A)
+			if (in_ex.code[uc] == in_ex.T || in_ex.code[uc] == in_ex.D || in_ex.code[uc] == in_ex.O)
 			{
 
 				text[in_ex.size] = uc;

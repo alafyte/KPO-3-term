@@ -4,10 +4,10 @@
 
 
 #define IN_CODE_TABLE {\
-	IN::T,	IN::T, IN::T, IN::T, IN::T,	IN::T, IN::T, IN::T, IN::T,	IN::T, IN::D, IN::T, IN::T,	IN::I, IN::T, IN::T/*15*/,\
+	IN::T,	IN::T, IN::T, IN::T, IN::T,	IN::T, IN::T, IN::T, IN::T,	IN::T,  '|' , IN::T, IN::T,	IN::I, IN::T, IN::T/*15*/,\
 	IN::T,	IN::T, IN::T, IN::T, IN::T,	IN::T, IN::T, IN::T, IN::T,	IN::T, IN::T, IN::T, IN::T,	IN::T, IN::T, IN::T/*31*/,\
-	IN::D,	IN::T, IN::T, IN::T, IN::T,	IN::T, IN::T, IN::D, IN::D,	IN::D, IN::A, IN::A, IN::D,	IN::A, IN::T, IN::A/*47*/,\
-	IN::T,	IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T,	IN::T, IN::T, IN::D, IN::T,	IN::A, IN::T, IN::T/*63*/,\
+	IN::D,	IN::T, IN::T, IN::T, IN::T,	IN::T, IN::T, IN::D, IN::D,	IN::D, IN::O, IN::O, IN::D,	IN::O, IN::T, IN::O/*47*/,\
+	IN::T,	IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T,	IN::T, IN::T, IN::D, IN::T,	IN::O, IN::T, IN::T/*63*/,\
 	IN::T,	IN::T, IN::T, IN::T, IN::T,	IN::T, IN::T, IN::T, IN::T,	IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T/*79*/,\
 	IN::T,	IN::T, IN::T, IN::T, IN::T,	IN::T, IN::T, IN::T, IN::I,	IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T/*95*/,\
 	IN::T,  IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T, IN::T/*111*/,\
@@ -27,7 +27,7 @@ namespace In
 {
 	struct IN
 	{
-		enum { T = 1024, F = 2048, I = 4096, D = 8192, A = 16384 };
+		enum { T = 1024, F = 2048, I = 4096, D = 8192, O = 16384 };
 		int size;
 		int lines;
 		int ignor;

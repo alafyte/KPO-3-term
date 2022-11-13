@@ -43,7 +43,6 @@ int _tmain(int argc, _TCHAR* argv[])
     {
         Log::WriteError(log, e);
         Out::WriteError(out, e);
-        cout << "Ошибка" << endl;
     }
     system("pause");
     return 0;

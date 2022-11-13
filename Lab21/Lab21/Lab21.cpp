@@ -1,20 +1,51 @@
-﻿// Lab21.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+﻿#include "stdafx.h"
 
-#include <iostream>
-
-int main()
+int _tmain(int argc, _TCHAR* argv[])
 {
-    std::cout << "Hello World!\n";
+    setlocale(LC_ALL, "Rus");
+
+    Log::LOG log = Log::INITLOG;
+    Out::OUT out = Out::INITOUT;
+    try
+    {
+        Parm::PARM parm = Parm::getparm(argc, argv);
+        log = Log::getlog(parm.log);
+        out = Out::getout(parm.out);
+        Log::WriteLine(log, "Тест: ", "без ошибок ", "");
+        Log::WriteLine(log, L"Тест: ", L"без ошибок\n ", L"");
+        Log::WriteLog(log);
+        Log::WriteParm(log, parm);
+        In::IN in = In::getin(parm.in);
+        Log::WriteIn(log, in);
+        Out::WriteIn(out, in);
+        LT::LexTable lexTable;
+        IT::IdTable	idTable;
+
+        LA::FindLex(in, lexTable, idTable);
+
+        lexTable.PrintLexTable(L"TableOfLexems.txt");
+        idTable.PrintIdTable(L"TableOfIdentificators.txt");
+
+        MFST_TRACE_START										//отладка
+        MFST::Mfst mfst(lexTable, GRB::getGreibach());			//автомат
+        mfst.start();											// старт синтаксического анализа
+
+        mfst.savededucation();									//сохранить правила вывода
+
+        mfst.printrules();										//отладка: вывести правила вывода
+
+        LT::Delete(lexTable);
+        IT::Delete(idTable);
+        Log::Close(log);
+        Out::Close(out);
+    }
+    catch (Error::ERROR e)
+    {
+        Log::WriteError(log, e);
+        Out::WriteError(out, e);
+        cout << "Ошибка" << endl;
+    }
+    system("pause");
+    return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
